@@ -7,6 +7,7 @@ from partida import *
 partida = Partida()
 proximo_jogador = partida.proximo_jogador()
 
+print(face_dado())
 
 
-face_dado()
+

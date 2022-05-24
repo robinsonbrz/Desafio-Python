@@ -20,8 +20,9 @@ class Jogador:
 
 class Jogador_impulsivo(Jogador):
     def compra_imovel(self, casa_tabuleiro):
-        casa_tabuleiro.propietario = self.__class__.__name__
+        casa_tabuleiro.proprietario = self.__class__.__name__
         self.saldo -= casa_tabuleiro.valor_imovel
+        # print( self.__class__.__name__, " comprou ", casa_tabuleiro.valor_imovel, self.saldo)
         return
 
 
@@ -30,8 +31,9 @@ class Jogador_exigente(Jogador):
         # compra qualquer propriedade com valor de aluguel maior do que 50
         # se compra subtrai valor movel do saldo
         if casa_tabuleiro.valor_aluguel > 50:
-            casa_tabuleiro.propietario = self.__class__.__name__
+            casa_tabuleiro.proprietario = self.__class__.__name__
             self.saldo -= casa_tabuleiro.valor_imovel
+            # print( self.__class__.__name__, " comprou ", casa_tabuleiro.valor_imovel, self.saldo)
         return
 
 
@@ -39,8 +41,9 @@ class Jogador_cauteloso(Jogador):
     def compra_imovel(self, casa_tabuleiro):
         # compra qualquer imovel mas deve lhe sobrar 80 de saldo na transação
         if (self.saldo - casa_tabuleiro.valor_imovel) >= 80:
-            casa_tabuleiro.propietario = self.__class__.__name__
+            casa_tabuleiro.proprietario = self.__class__.__name__
             self.saldo -= casa_tabuleiro.valor_imovel
+            # print( self.__class__.__name__, " comprou ", casa_tabuleiro.valor_imovel, self.saldo)
         return
 
 
@@ -49,8 +52,9 @@ class Jogador_aleatorio(Jogador):
         # Comprador aleatório, com 50% de chance de comprar
         compra = random.randint(1, 2)
         if compra == 1:
-            casa_tabuleiro.propietario = self.__class__.__name__
+            casa_tabuleiro.proprietario = self.__class__.__name__
             self.saldo -= casa_tabuleiro.valor_imovel
+            # print( self.__class__.__name__, " comprou ", casa_tabuleiro.valor_imovel, self.saldo)
         return
 
 

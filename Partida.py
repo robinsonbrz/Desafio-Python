@@ -11,14 +11,14 @@ class Partida:
         self.rodada = 0
         self.ultimo_jogador = 3
         self.jogadores_falidos = 0
-        lista_jogadores = [
+        self.lista_jogadores = [
             Jogador_impulsivo(),
             Jogador_exigente(),
             Jogador_cauteloso(),
             Jogador_aleatorio()
         ]
-        random.shuffle(lista_jogadores)
-        self.ordem_lancamento_jogadores = lista_jogadores
+        random.shuffle(self.lista_jogadores)
+        self.ordem_lancamento_jogadores = self.lista_jogadores
         self.casa_tabuleiro = init_tabuleiro()
 
 
@@ -43,10 +43,23 @@ class Partida:
     
     def vencedor(self):
         saldos = []
+        ganhador = []
         for jogador in self.ordem_lancamento_jogadores:
             if jogador.saldo >= 0:
                 saldos.append(jogador.saldo)
                 
         tmp = max(saldos)
-        indice = self.ordem_lancamento_jogadores.index(tmp)                
-        return self.ordem_lancamento_jogadores[indice]
+
+        for jogador in self.ordem_lancamento_jogadores:
+            if jogador.saldo == tmp:
+                ganhador.append(jogador.__class__.__name__)
+
+        # retorna o maior em caso de empate o primeiro da lista que seria o próximo a jogar
+        return ganhador[0]
+
+    
+    def reseta_propriedades_de_perdedor(self, jogador):
+        for casa in self.casa_tabuleiro:
+            if casa.proprietario == jogador.__class__.__name__ :
+                casa.proprietario = ""
+        return

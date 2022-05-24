@@ -56,7 +56,3 @@ class Jogador_aleatorio(Jogador):
             self.saldo -= casa_tabuleiro.valor_imovel
             # print( self.__class__.__name__, " comprou ", casa_tabuleiro.valor_imovel, self.saldo)
         return
-
-
-
-

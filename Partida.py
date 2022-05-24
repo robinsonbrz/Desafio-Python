@@ -1,7 +1,6 @@
 import random
 
 from casa_tabuleiro import Casa_tabuleiro
-from funcoes import init_tabuleiro
 from jogador import (Jogador_aleatorio, Jogador_cauteloso, Jogador_exigente,
                      Jogador_impulsivo)
 
@@ -19,7 +18,7 @@ class Partida:
         ]
         random.shuffle(self.lista_jogadores)
         self.ordem_lancamento_jogadores = self.lista_jogadores
-        self.casa_tabuleiro = init_tabuleiro()
+        self.casa_tabuleiro = self.init_tabuleiro()
 
 
     def proximo_jogador(self):
@@ -40,7 +39,7 @@ class Partida:
 
 
     # Inicia tabuleiros com valor e alugueis
-    def init_tabuleiro():
+    def init_tabuleiro(self):
         tabuleiro = []
 
         for i in range(20):

@@ -11,6 +11,8 @@ class Simulacao:
         # média de roddadas das partidas
         # percentagem de vitórias por comportamento de jogadores
         # comportamento que mais venceu
+
+        # lista que acumulou os vitoriosos das rodadas
         comportamentos = set(self.vitoriosos)
 
         nome = []
@@ -19,9 +21,10 @@ class Simulacao:
         maior = 0
 
         media = round(self.media_rodadas(),2)
-        saida = f"\n\n\nPartidas finalizadas por timeout: {self.encerradas_timeout}\nMédia de rodadas para o fim de partida: {media}\n\n"
+        saida = f"\n\n\nQuantidade de partidas finalizadas por timeout: {self.encerradas_timeout}\nMédia de turnos que demoram as partidas: {media}\n\n"
 
-
+        # processa as listas que acumularam vitoriosos de cada rodada
+        # média de turnos até o fim da simulação
         for comportamento in comportamentos:
             nome.append(comportamento)
             valor.append(self.vitoriosos.count(comportamento))
@@ -34,7 +37,7 @@ class Simulacao:
         index = valor.index(maior)
         nome_maior = nome[index]
 
-        saida += f"Comportamento com maior vitórias: {nome_maior}\n_________________________________________________________"
+        saida += f"Comportamento com mais vitórias: {nome_maior}\n_________________________________________________________"
         return saida
 
 

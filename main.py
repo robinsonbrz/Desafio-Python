@@ -21,7 +21,7 @@ while simulacao.numero_simulacoes < 300:
                 
                 # esta casa possui proprietario
                 else:
-                    # esse jogador nao é proprietário da casa entao deve pagar
+                    # esse jogador nao é proprietário da casa entao deve pagar aluguel
                     if partida_atual.casa_tabuleiro[nova_posicao].proprietario != j.__class__.__name__ :
                         j.saldo -= partida_atual.casa_tabuleiro[nova_posicao].valor_aluguel
                         # adicionar valor ao proprietário
@@ -33,14 +33,15 @@ while simulacao.numero_simulacoes < 300:
                             if partida_atual.jogadores_falidos > 2:
                                 # houve vencedor
                                 simulacao.vitoriosos.append(partida_atual.vencedor())
-                                simulacao.rodadas_partida.append(rodada)
+                                simulacao.rodadas_partida.append(rodada + 1)
                                 flag_vencedor = True
                                 break
     else:
         # caso timeout
         simulacao.encerradas_timeout += 1
-        # checar o vencedor
+        # acumula em listas os vencedores e a quantidade de rodadas 
         simulacao.vitoriosos.append(partida_atual.vencedor())
+        simulacao.rodadas_partida.append(rodada + 1)
 
     simulacao.numero_simulacoes += 1
 # print(simulacao.numero_simulacoes)

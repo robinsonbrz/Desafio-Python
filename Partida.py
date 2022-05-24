@@ -1,13 +1,23 @@
 import random
 
+from jogador import (Jogador_aleatorio, Jogador_cauteloso, Jogador_exigente,
+                     Jogador_impulsivo)
+
 
 class Partida:
     def __init__(self):
         self.rodada = 0
-        lista_jogadores = [0, 1, 2, 3]
+        self.ultimo_jogador = 3
+        self.jogadores_falidos = 0
+        lista_jogadores = [
+            Jogador_impulsivo(),
+            Jogador_exigente(),
+            Jogador_cauteloso(),
+            Jogador_aleatorio()
+        ]
         random.shuffle(lista_jogadores)
         self.ordem_lancamento_jogadores = lista_jogadores
-        self.ultimo_jogador = 3
+
 
     def proximo_jogador(self):
         if self.ultimo_jogador == 3:

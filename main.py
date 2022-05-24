@@ -32,6 +32,8 @@ while simulacao.numero_simulacoes < 300:
                     if partida_atual.casa_tabuleiro[nova_posicao].proprietario != j.__class__.__name__ :
                         j.saldo -= partida_atual.casa_tabuleiro[nova_posicao].valor_aluguel
                         # adicionar valor ao proprietário
+                        partida_atual.paga_proprietario(partida_atual.casa_tabuleiro[nova_posicao])
+                        # print("Proprietário: ", partida_atual.casa_tabuleiro[nova_posicao].proprietario)
                         # print(j.__class__.__name__, " pagou aluguel ", j.saldo, "aluguel ", partida_atual.casa_tabuleiro[nova_posicao].valor_aluguel)
                         if j.saldo < 0:
                             partida_atual.jogadores_falidos += 1

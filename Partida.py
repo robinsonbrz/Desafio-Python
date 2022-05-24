@@ -31,6 +31,14 @@ class Partida:
         return proximo_jogador_jogar
 
 
+    def paga_proprietario(self, casa):
+        for jog in self.lista_jogadores:
+            jog.saldo = jog.saldo
+            if jog.__class__.__name__ == casa.proprietario:
+                jog.saldo += casa.valor_aluguel
+        return
+
+
     # Inicia tabuleiros com valor e alugueis
     def init_tabuleiro():
         tabuleiro = []

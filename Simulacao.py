@@ -3,6 +3,8 @@ class Simulacao:
         self.numero_simulacoes = 0
         self.encerradas_timeout = 0
         self.rodadas_partida = []
+        self.vitoriosos = []
+
         self.vitorias_impulsivo = 0
         self.vitorias_exigente  = 0
         self.vitorias_cauteloso = 0
@@ -16,3 +18,6 @@ class Simulacao:
         # percentagem de vitórias por comportamento de jogadores
         # comportamento que mais venceu
         return
+
+
+# list. count

@@ -11,19 +11,28 @@ while simulacao.numero_simulacoes < 300:
     for i in range(1000):
 
         for jogador in partida_atual.ordem_lancamento_jogadores:
-            if partida_atual.jogadores_falidos < 3:
+            
                 j = partida_atual.proximo_jogador()
                 if j.saldo >= 0:
                     nova_posicao = j.joga_dado()
+                    # se a casa em que caiu nao possui proprietario
                     if partida_atual.casa_tabuleiro[nova_posicao].proprietario == "":
+                        # se possui saldo para a compra
                         if partida_atual.casa_tabuleiro[nova_posicao].valor_imovel < j.saldo:
                             j.compra_imovel(partida_atual.casa_tabuleiro[nova_posicao])
-
+                    
+                    # esta casa possui proprietario
                     else:
+                        # esse jogador nao é proprietário da casa entao deve pagar
                         if partida_atual.casa_tabuleiro[nova_posicao].proprietario != j.__class__.__name__ :
                             j.saldo -= partida_atual.casa_tabuleiro[nova_posicao].valor_imovel
                             if j.saldo < 0:
                                 partida_atual.jogadores_falidos += 1
+                                # se houverem 3  falidos existe um vencedor
+                                if partida_atual.jogadores_falidos > 2:
+                                    # houve vencedor
+                                    simulacao.vitoriosos.append(j.vencedor())
+
                             
 
 

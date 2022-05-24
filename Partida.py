@@ -39,3 +39,14 @@ class Partida:
             valor_imovel = (i + 1) * 8
             tabuleiro.append(Casa_tabuleiro(valor_imovel))
         return tabuleiro
+
+    
+    def vencedor(self):
+        saldos = []
+        for jogador in self.ordem_lancamento_jogadores:
+            if jogador.saldo >= 0:
+                saldos.append(jogador.saldo)
+                
+        tmp = max(saldos)
+        indice = self.ordem_lancamento_jogadores.index(tmp)                
+        return self.ordem_lancamento_jogadores[indice]

@@ -1,5 +1,7 @@
 import random
 
+from casa_tabuleiro import Casa_tabuleiro
+from funcoes import init_tabuleiro
 from jogador import (Jogador_aleatorio, Jogador_cauteloso, Jogador_exigente,
                      Jogador_impulsivo)
 
@@ -17,6 +19,7 @@ class Partida:
         ]
         random.shuffle(lista_jogadores)
         self.ordem_lancamento_jogadores = lista_jogadores
+        self.casa_tabuleiro = init_tabuleiro()
 
 
     def proximo_jogador(self):
@@ -26,3 +29,13 @@ class Partida:
             self.ultimo_jogador += 1
         proximo_jogador_jogar = self.ordem_lancamento_jogadores[self.ultimo_jogador]
         return proximo_jogador_jogar
+
+
+    # Inicia tabuleiros com valor e alugueis
+    def init_tabuleiro():
+        tabuleiro = []
+
+        for i in range(20):
+            valor_imovel = (i + 1) * 8
+            tabuleiro.append(Casa_tabuleiro(valor_imovel))
+        return tabuleiro

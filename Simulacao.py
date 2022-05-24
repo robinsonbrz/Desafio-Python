@@ -3,6 +3,12 @@ class Simulacao:
         self.numero_simulacoes = 0
         self.encerradas_timeout = 0
         self.rodadas_partida = []
+        self.vitorias_impulsivo = 0
+        self.vitorias_exigente  = 0
+        self.vitorias_cauteloso = 0
+        self.vitorias_aleatorio = 0
+
+
 
     def __str__(self):
         # quantidade_de_partidas encerradas por timeout

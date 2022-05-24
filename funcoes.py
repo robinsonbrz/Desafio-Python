@@ -1,4 +1,4 @@
-import random
+
 
 from casa_tabuleiro import Casa_tabuleiro
 
@@ -13,5 +13,10 @@ def init_tabuleiro():
     return casa_tabuleiro
 
 
-def face_dado():
-    return random.randint(1, 6)
+
+#######################################
+#######################################
+#######################################
+# Apagar
+#######################################
+#######################################
